@@ -1,0 +1,15 @@
+#header__searth-btn{
+    overflow: hidden;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    text-shadow: 0 100px 0 #FFF, 1px 76px 10px #000;
+    color: #FFF;
+    background: rgb(21, 21, 92);
+    border-right: 2px solid #FFF;
+    border-left: 2px solid #FFF;
+    font-size: 1.5em;
+}
+#header__searth-btn:hover {
+    color: orange;
+}

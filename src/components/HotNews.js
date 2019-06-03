@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import './style.css';
+import '../css/HotNews.css';
 import ListSource from './ListSource';
 import ListArticle from './ListArticle';
+import Search from './Search';
+import BaseButton from './BaseButton.js';
 
 export default class HotNews extends Component {
     constructor(props){
@@ -82,25 +84,25 @@ export default class HotNews extends Component {
        const sources = this.state.sources.slice(0,this.countSources).map(source=>ListSource(source));
        if ((this.state.articles!==undefined)&&(this.state.articles.length>0))
        art=this.state.articles.slice(0,this.countNews).map(article=>ListArticle(article));
-       const news = <div>{art}</div>;
-       const button = this.state.needButton &&<ul id="btn-load-more" className="button" onClick={this.handleClick}>Load more</ul>;
+       const news = <div>{art}</div>; 
+       const button = this.state.needButton &&<BaseButton id = "btn-load-more" className = "button" value ="Load more" ButtonClick = {this.handleClick}/>;
        return (
-            <header>        
-            <h1 className = "header__title"><img src = "./picture/logo.png" className = "header__title__image" alt=''/>HotNews</h1>
-            <hr color = "orange"></hr>
-            <ul className = "header__list" onClick = {this.handleSourceClick}> 
-                {sources}
-            </ul>
-            <div>           
-                <input type = "text" id = "header__searth-text" onKeyUp = {this.handleEnterClick}></input>
-                <input type = "button" id = "header__searth-btn" value ="Search" onClick = {this.handleSearchClick}></input>
-            </div> 
-            <main>
-                <ul id = "news">{news}</ul>
-                {button}
+           <div>
+                <header>        
+                    <h1 className = "header__title"><img src = "./picture/logo.png" className = "header__title__image" alt=''/>HotNews</h1>
+                    <hr color = "orange"></hr>
+                    <ul className = "header__list" onClick = {this.handleSourceClick}> 
+                        {sources}
+                    </ul>
+                    <Search EnterClick= {this.handleEnterClick.bind(this)}
+                        SearchClick={this.handleSearchClick.bind(this)}/>  
+                </header>        
+                <main>
+                    <ul id = "news">{news}</ul>
+                    {button}        
+                </main>
+            </div>
         
-             </main>
-        </header>
         );
     }
     
